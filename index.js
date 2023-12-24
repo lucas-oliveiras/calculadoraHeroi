@@ -1,25 +1,32 @@
-function calcularNivel(vitorias, derrotas) {
-    var saldoVitorias = vitorias - derrotas;
-    var nivel = "";
+class Heroi {
+  constructor(nome, idade, tipo) {
+      this.nome = nome;
+      this.idade = idade;
+      this.tipo = tipo;
+  }
 
-    if (saldoVitorias < 10) {
-        nivel = "Ferro";
-    } else if (saldoVitorias >= 11 && saldoVitorias <= 20) {
-        nivel = "Bronze";
-    } else if (saldoVitorias >= 21 && saldoVitorias <= 50) {
-        nivel = "Prata";
-    } else if (saldoVitorias >= 51 && saldoVitorias <= 80) {
-        nivel = "Ouro";
-    } else if (saldoVitorias >= 81 && saldoVitorias <= 90) {
-        nivel = "Diamante";
-    } else if (saldoVitorias >= 91 && saldoVitorias <= 100) {
-        nivel = "Lendário";
-    } else if (saldoVitorias >= 101) {
-        nivel = "Imortal";
-    }
-
-    return "O Herói tem de saldo de " + saldoVitorias + " está no nível de " + nivel;
+  atacar() {
+      let ataque;
+      switch(this.tipo) {
+          case 'mago':
+              ataque = 'magia';
+              break;
+          case 'guerreiro':
+              ataque = 'usou espada';
+              break;
+          case 'monge':
+              ataque = 'usou artes marciais';
+              break;
+          case 'ninja':
+              ataque = 'usou shuriken';
+              break;
+          default:
+              ataque = 'usou ataque desconhecido';
+      }
+      console.log(`O ${this.tipo} atacou usando ${ataque}`);
+  }
 }
 
-// Exemplo de uso:
-console.log(calcularNivel(120, 10));
+// Exemplo de uso
+let heroi = new Heroi('John', 25, 'mago');
+heroi.atacar();  // Saída: "O mago atacou usando usou magia"
